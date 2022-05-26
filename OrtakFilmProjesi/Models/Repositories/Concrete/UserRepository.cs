@@ -14,5 +14,16 @@ namespace OrtakFilmProjesi.Models.Repositories.Concrete
         {
             this.db = db;
         }
+
+        public bool IsUserPasswordTrue(string password)
+        {
+            return db.Set<User>().Any(x => x.Password == password);
+
+        }
+        public bool IsUserMailTrue(int id)
+        {
+            return db.Set<User>().Any(x => x.Id == id);
+
+        }
     }
 }
