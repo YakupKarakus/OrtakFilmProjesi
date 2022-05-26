@@ -2,10 +2,9 @@
 
 namespace OrtakFilmProjesi.Models
 {
-    public class User
+    public class User:BaseEntity
     {
-        [Display(Name ="Kullanıcı Kodu")]
-        public int Id { get; set; }
+        
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Mail { get; set; }

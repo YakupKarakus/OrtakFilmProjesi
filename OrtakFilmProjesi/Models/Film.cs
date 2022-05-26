@@ -3,15 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OrtakFilmProjesi.Models
 {
-    public class Film
+    public class Film:BaseEntity
     {
         public Film()
         {
             seanslars=new HashSet<Seanslar>();
             categories=new HashSet<Category>(); 
         }
-        [Display(Name = "Film Kodu")]
-        public int Id { get; set; }
+       
         [Display(Name = "Ad")]
         [Required]
         [MinLength(5, ErrorMessage = "Film Adı en az 5 karakter olmalıdır.")]

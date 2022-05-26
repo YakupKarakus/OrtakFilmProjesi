@@ -3,14 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OrtakFilmProjesi.Models
 {
-    public class Category
+    public class Category:BaseEntity
     {
         public Category()
         {
             Filmler = new HashSet<Film>();
         }
-        [Display(Name="Kategori Kodu")]
-        public int Id { get; set; }
+        
 
         [Display(Name="Ad")]
         [Required]

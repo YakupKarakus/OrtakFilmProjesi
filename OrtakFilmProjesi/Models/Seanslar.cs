@@ -23,13 +23,13 @@ namespace OrtakFilmProjesi.Models
         N=24,
     }
 
-    public class Seanslar
+    public class Seanslar:BaseEntity
     {
         public Seanslar()
         {
             Filmler = new HashSet<Film>();
         }
-        public int Id { get; set; }
+        
         [DataType(DataType.Date)]
         [Required]
         [Display(Name ="Tarih")]
