@@ -25,13 +25,12 @@ namespace OrtakFilmProjesi.Models
 
     }
 
-    public class Seanslar
+    public class Seanslar : BaseEntity
     {
         public Seanslar()
         {
             Filmler = new HashSet<Film>();
         }
-        public int Id { get; set; }
         public DateTime Date { get; set; }
         public SeansTime seans { get; set; }
         public ICollection<Film> Filmler { get; set; }
