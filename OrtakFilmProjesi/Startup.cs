@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OrtakFilmProjesi.Models.Database;
+using OrtakFilmProjesi.Models.Repositories.Abstract;
+using OrtakFilmProjesi.Models.Repositories.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,7 @@ namespace OrtakFilmProjesi
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FilmSiteConStr")));
-
+            services.AddScoped(typeof(IRepository<>), typeof(Genericrepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +52,7 @@ namespace OrtakFilmProjesi
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}/{id?}");
             });
         }
     }
