@@ -27,7 +27,7 @@ namespace OrtakFilmProjesi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FilmmDbConStr")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FilmSiteConStr")));
             services.AddScoped(typeof(IRepository<>), typeof(Genericrepository<>));
         }
 
@@ -52,7 +52,7 @@ namespace OrtakFilmProjesi
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}/{id?}");
             });
         }
     }

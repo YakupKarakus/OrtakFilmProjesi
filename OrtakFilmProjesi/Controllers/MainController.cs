@@ -7,22 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrtakFilmProjesi.Areas.User.Controllers
+namespace OrtakFilmProjesi.Controllers
 {
-    public class HomeController : Controller
+    public class MainController : Controller
     {
-        private readonly UserRepository userRepository;
         private readonly FilmRepository filmRepository;
-
-        public HomeController(UserRepository userRepository, FilmRepository filmRepository)
+        private readonly IRepository<Film> filmler;
+        public MainController(IRepository<Film> filmler)
         {
-            this.userRepository = userRepository;
-            this.filmRepository = filmRepository;
+            this.filmler = filmler;
         }
-
         public IActionResult Index()
         {
-            IEnumerable<Film> films = filmRepository.GetAll();
+            var films = filmler.GetAll();
             return View(films);
         }
     }

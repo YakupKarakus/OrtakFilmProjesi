@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OrtakFilmProjesi.Models
 {
@@ -20,18 +21,20 @@ namespace OrtakFilmProjesi.Models
         L=22,
         M=23,
         N=24,
-
-
-
     }
 
-    public class Seanslar : BaseEntity
+    public class Seanslar:BaseEntity
     {
         public Seanslar()
         {
             Filmler = new HashSet<Film>();
         }
+        
+        [DataType(DataType.Date)]
+        [Required]
+        [Display(Name ="Tarih")]
         public DateTime Date { get; set; }
+        [Display(Name ="Seans")]
         public SeansTime seans { get; set; }
         public ICollection<Film> Filmler { get; set; }
 
