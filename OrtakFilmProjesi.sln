@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrtakFilmProjesi", "OrtakFilmProjesi\OrtakFilmProjesi.csproj", "{6158DF06-457E-45F0-A270-B102AF585599}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6158DF06-457E-45F0-A270-B102AF585599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6158DF06-457E-45F0-A270-B102AF585599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6158DF06-457E-45F0-A270-B102AF585599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6158DF06-457E-45F0-A270-B102AF585599}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B443CEEF-253B-4957-B06F-A0AE63F3EC35}
+	EndGlobalSection
+EndGlobal
