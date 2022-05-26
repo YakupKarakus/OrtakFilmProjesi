@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Film>
+
+@foreach (var movie in Model)
+{<div class="card mb-3">
+        <div class="row no-gutter">
+            <div class="col-md-3">
+                <img src="~/img/@movie.PhotoPath" alt="@movie.Name" class="card-img">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title">@movie.Name</h5>                    
+                </div>
+            </div>
+        </div>
+ </div>
+ }
