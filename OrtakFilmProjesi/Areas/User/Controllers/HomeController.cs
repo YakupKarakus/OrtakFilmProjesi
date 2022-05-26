@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrtakFilmProjesi.Models;
 using OrtakFilmProjesi.Models.Repositories.Abstract;
 using OrtakFilmProjesi.Models.Repositories.Concrete;
 using System;
@@ -11,14 +12,18 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
     public class HomeController : Controller
     {
         private readonly UserRepository userRepository;
+        private readonly FilmRepository filmRepository;
 
-        public HomeController(UserRepository userRepository)
+        public HomeController(UserRepository userRepository, FilmRepository filmRepository)
         {
             this.userRepository = userRepository;
+            this.filmRepository = filmRepository;
         }
+
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Film> films = filmRepository.GetAll();
+            return View(films);
         }
     }
 }
