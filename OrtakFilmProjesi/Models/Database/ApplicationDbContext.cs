@@ -15,7 +15,15 @@ namespace OrtakFilmProjesi.Models.Database
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {  
+        {
+            modelBuilder.Entity<User>().HasData(
+                                                new User
+                                                {
+                                                    Id=1,
+                                                    Mail= "admin@hotmail.com",
+                                                    Password= "12345"
+                                                }
+                                                );
         }
     }
 
