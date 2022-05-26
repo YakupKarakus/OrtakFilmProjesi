@@ -14,5 +14,7 @@ namespace OrtakFilmProjesi.Models.Repositories.Concrete
         {
             this.db = db;
         }
+
+       
     }
 }

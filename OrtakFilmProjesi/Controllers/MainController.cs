@@ -11,14 +11,15 @@ namespace OrtakFilmProjesi.Controllers
 {
     public class MainController : Controller
     {
-        private readonly IRepository<Film> filmRepository;
-        public MainController(IRepository<Film> filmRepository)
+        private readonly FilmRepository filmRepository;
+        private readonly IRepository<Film> filmler;
+        public MainController(IRepository<Film> filmler)
         {
-            this.filmRepository = filmRepository;
+            this.filmler = filmler;
         }
         public IActionResult Index()
         {
-            var films = filmRepository.GetAll();
+            var films = filmler.GetAll();
             return View(films);
         }
     }
