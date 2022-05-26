@@ -11,10 +11,10 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UserRepository userRepository;
-        private readonly FilmRepository filmRepository;
+        private readonly IRepository<OrtakFilmProjesi.Models.User> userRepository;
+        private readonly IRepository<Film> filmRepository;
 
-        public HomeController(UserRepository userRepository, FilmRepository filmRepository)
+        public HomeController(IRepository<OrtakFilmProjesi.Models.User> userRepository, IRepository<Film> filmRepository)
         {
             this.userRepository = userRepository;
             this.filmRepository = filmRepository;
@@ -24,6 +24,12 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
         {
             IEnumerable<Film> films = filmRepository.GetAll();
             return View(films);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            var film = filmRepository.GetById(id);
+            return View(film);
         }
     }
 }

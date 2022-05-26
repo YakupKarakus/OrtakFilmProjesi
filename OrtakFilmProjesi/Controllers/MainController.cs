@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrtakFilmProjesi.Models;
+using OrtakFilmProjesi.Models.Repositories.Abstract;
 using OrtakFilmProjesi.Models.Repositories.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,8 +11,8 @@ namespace OrtakFilmProjesi.Controllers
 {
     public class MainController : Controller
     {
-        private readonly FilmRepository filmRepository;
-        public MainController(FilmRepository filmRepository)
+        private readonly IRepository<Film> filmRepository;
+        public MainController(IRepository<Film> filmRepository)
         {
             this.filmRepository = filmRepository;
         }

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<OrtakFilmProjesi.Models.Film>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var movie in Model)
+{
+    <div class="card mb-3">
+        <div class="row no-gutter">
+            <div class="col-md-3">
+                <a asp-action = "Detail" asp-route-id=@movie.Id><img src="~/img/@movie.PhotoPath" alt="@movie.Name" class="card-img"></a> 
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <a asp-action = "Detail" asp-route-id = @movie.Id><h5 class="card-title">@movie.Name</h5></a> 
+                </div>
+            </div>
+        </div>
+    </div>
+}
