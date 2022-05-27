@@ -7,19 +7,25 @@ namespace OrtakFilmProjesi.Models
     {
         public Film()
         {
-            seanslars=new HashSet<Seanslar>();
-            categories=new HashSet<Category>(); 
+            Sessions=new HashSet<Session>();
+            Categories=new HashSet<Category>(); 
         }
        
         [Display(Name = "Ad")]
         [Required]
         [MinLength(5, ErrorMessage = "Film Adı en az 5 karakter olmalıdır.")]
         public string Name { get; set; }
-        [Display(Name="Fotoğraf Yolu")]
+        [Display(Name= "Fotoğraf Yolu")]
         public string PhotoPath { get; set; }
-        [Display(Name="Seanslar")]
-        public ICollection<Seanslar> seanslars { get; set; }
-        [Display(Name="Kategoriler")]
-        public ICollection<Category> categories { get; set; }
+        [MinLength (50,ErrorMessage = "Açıklama en az 50 karaketer olmalıdır.")]
+        [Display(Name = "Açıklamalar")]
+        public string Description { get; set; }
+        [Display(Name = "Fiyat")]
+        [Required]
+        public decimal Price { get; set; }
+        [Display(Name= "Seanslar")]
+        public ICollection<Session> Sessions { get; set; }
+        [Display(Name= "Kategoriler")]
+        public ICollection<Category> Categories { get; set; }
     }
 }

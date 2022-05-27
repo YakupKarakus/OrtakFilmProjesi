@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrtakFilmProjesi.Models.Repositories.Concrete
 {
-    public class SeansRepository: Genericrepository<Seanslar>
+    public class SeansRepository: Genericrepository<Session>
     {
         private readonly ApplicationDbContext db;
 

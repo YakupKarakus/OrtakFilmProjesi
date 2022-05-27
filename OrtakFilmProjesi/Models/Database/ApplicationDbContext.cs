@@ -11,7 +11,7 @@ namespace OrtakFilmProjesi.Models.Database
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Film> Films { get; set; }
-        public DbSet<Seanslar> Seanslars { get; set; }
+        public DbSet<Session> Sessions { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

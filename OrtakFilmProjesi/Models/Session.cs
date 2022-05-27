@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OrtakFilmProjesi.Models
 {
-    public enum SeansTime
+    public enum SessionTimeEnum
     {
         
         A=11,
@@ -23,20 +23,21 @@ namespace OrtakFilmProjesi.Models
         N=24,
     }
 
-    public class Seanslar:BaseEntity
+    public class Session:BaseEntity
     {
-        public Seanslar()
+        public Session()
         {
-            Filmler = new HashSet<Film>();
+            Films = new HashSet<Film>();
         }
         
         [DataType(DataType.Date)]
         [Required]
         [Display(Name ="Tarih")]
         public DateTime Date { get; set; }
+        public float Discount { get; set; }
         [Display(Name ="Seans")]
-        public SeansTime seans { get; set; }
-        public ICollection<Film> Filmler { get; set; }
+        public SessionTimeEnum SessionTime { get; set; }
+        public ICollection<Film> Films { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ namespace OrtakFilmProjesi.Models
     {
         public Category()
         {
-            Filmler = new HashSet<Film>();
+            Films = new HashSet<Film>();
         }
         
 
@@ -15,6 +15,6 @@ namespace OrtakFilmProjesi.Models
         [Required]
         [MinLength(3, ErrorMessage = "Kategori Adı en az 3 karakter olmalıdır.")]
         public string Name { get; set; }
-        public ICollection<Film> Filmler { get; set; }
+        public ICollection<Film> Films { get; set; }
     }
 }
