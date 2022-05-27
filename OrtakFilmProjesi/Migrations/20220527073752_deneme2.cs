@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OrtakFilmProjesi.Migrations
 {
-    public partial class CreateDb : Migration
+    public partial class deneme2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
