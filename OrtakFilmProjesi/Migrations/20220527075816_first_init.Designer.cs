@@ -10,8 +10,8 @@ using OrtakFilmProjesi.Models.Database;
 namespace OrtakFilmProjesi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220527075010_initdb2")]
-    partial class initdb2
+    [Migration("20220527075816_first_init")]
+    partial class first_init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
