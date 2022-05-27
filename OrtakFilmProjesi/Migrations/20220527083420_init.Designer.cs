@@ -10,8 +10,8 @@ using OrtakFilmProjesi.Models.Database;
 namespace OrtakFilmProjesi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220527074909_initDb")]
-    partial class initDb
+    [Migration("20220527083420_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,12 +84,30 @@ namespace OrtakFilmProjesi.Migrations
                     b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.ToTable("Films");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Fiziksel ve ruhsal bir şifa yolculuğundayken, parlak bir beyin cerrahı mistik sanatların dünyasına çekilir.",
+                            Name = "Dr.Strange",
+                            PhotoPath = "Dr.Strange.png",
+                            Price = 50.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Asil bir aile, galaksinin en değerli varlığı üzerinde kontrol için bir savaşa girerken, varisi karanlık bir geleceğin vizyonları tarafından rahatsız edilir.",
+                            Name = "Dune",
+                            PhotoPath = "Dune.png",
+                            Price = 50.0
+                        });
                 });
 
             modelBuilder.Entity("OrtakFilmProjesi.Models.Session", b =>

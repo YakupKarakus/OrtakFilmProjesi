@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OrtakFilmProjesi.Migrations
 {
-    public partial class initDb : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace OrtakFilmProjesi.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,6 +112,16 @@ namespace OrtakFilmProjesi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Films",
+                columns: new[] { "Id", "Description", "Name", "PhotoPath", "Price" },
+                values: new object[] { 1, "Fiziksel ve ruhsal bir şifa yolculuğundayken, parlak bir beyin cerrahı mistik sanatların dünyasına çekilir.", "Dr.Strange", "Dr.Strange.png", 50.0 });
+
+            migrationBuilder.InsertData(
+                table: "Films",
+                columns: new[] { "Id", "Description", "Name", "PhotoPath", "Price" },
+                values: new object[] { 2, "Asil bir aile, galaksinin en değerli varlığı üzerinde kontrol için bir savaşa girerken, varisi karanlık bir geleceğin vizyonları tarafından rahatsız edilir.", "Dune", "Dune.png", 50.0 });
 
             migrationBuilder.InsertData(
                 table: "Users",
