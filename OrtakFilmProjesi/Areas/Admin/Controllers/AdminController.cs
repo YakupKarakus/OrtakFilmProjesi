@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OrtakFilmProjesi.Models;
-using OrtakFilmProjesi.Models.Repositories.Abstract;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using OrtakFilmProjesi.Models.Repositories.Concrete;
+
 
 namespace OrtakFilmProjesi.Areas.Admin.Controllers
 {
@@ -20,38 +20,38 @@ namespace OrtakFilmProjesi.Areas.Admin.Controllers
         {
             return View();
         }
+
+
+
         
-       
-      
 
-
-        public ActionResult Login()
+        public IActionResult LogIn()
         {
             return View();
         }
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(int id,string mail,string password)
+        public IActionResult LogIn(OrtakFilmProjesi.Models.User user)
         {
-            if (ModelState.IsValid)
+            var _user = _userRepository.GetByMailAndPassword(user.Mail,user.Password);
+            if (_user == null)
             {
-                var user=_userRepository.GetById(id);
-               if (user.Mail == mail && user.Password == password)
-                {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
-
-
+                TempData["Message"] = "Giriş bilgileri hatalı.";
+                return View();
             }
-            return View();
+            HttpContext.Session.SetString("Mail", user.Mail);
+            HttpContext.Session.SetString("Password", user.Password);
+            TempData["Message"] = "Hoşgeldin";
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Remove("Mail");
+            HttpContext.Session.Remove("Password");
+            TempData["Message"] = "Güle güle";
+            return RedirectToAction("Index", "Home");
         }
 
-        
+
 
     }
 }
