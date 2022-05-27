@@ -21,7 +21,7 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
             this.filmRepository = filmRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult UserIndex()
         {
             IEnumerable<Film> films = filmRepository.GetAll();
             return View(films);
