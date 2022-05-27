@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OrtakFilmProjesi.Migrations
 {
-    public partial class first_init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,6 +27,7 @@ namespace OrtakFilmProjesi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false)
                 },
@@ -114,14 +115,14 @@ namespace OrtakFilmProjesi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Films",
-                columns: new[] { "Id", "Description", "Name", "Price" },
+                columns: new[] { "Id", "Description", "Name", "PhotoPath", "Price" },
                 values: new object[,]
                 {
-                    { 1, "Fiziksel ve ruhsal bir şifa yolculuğundayken, parlak bir beyin cerrahı mistik sanatların dünyasına çekilir.", "Dr.Strange", 50.0 },
-                    { 2, "Asil bir aile, galaksinin en değerli varlığı üzerinde kontrol için bir savaşa girerken, varisi karanlık bir geleceğin vizyonları tarafından rahatsız edilir.", "Dune", 50.0 },
-                    { 3, "Bir kaşif ekibi, insanlığın hayatta kalmasını sağlamak için uzayda bir solucan deliğinden geçer.", "Interstellar", 50.0 },
-                    { 4, "Thor, tanrıları yok etmeyi amaçlayan Tanrı Kasabı Gorr ile savaşmak için Valkyrie, Korg ve eski kız arkadaşı Jane Foster'dan yardım ister.", "Thor", 50.0 },
-                    { 5, "Donanmanın en iyi havacılarından biri olarak otuz yıldan fazla hizmet verdikten sonra, Pete Mitchell ait olduğu yerdedir, cesur bir test pilotu olarak sınırları zorlar ve onu yere indirecek rütbedeki ilerlemeden kaçınır.", "TopGun", 50.0 }
+                    { 1, "Fiziksel ve ruhsal bir şifa yolculuğundayken, parlak bir beyin cerrahı mistik sanatların dünyasına çekilir.", "Dr.Strange", "Dr.Strange.png", 50.0 },
+                    { 2, "Asil bir aile, galaksinin en değerli varlığı üzerinde kontrol için bir savaşa girerken, varisi karanlık bir geleceğin vizyonları tarafından rahatsız edilir.", "Dune", "Dune.png", 50.0 },
+                    { 3, "Bir kaşif ekibi, insanlığın hayatta kalmasını sağlamak için uzayda bir solucan deliğinden geçer.", "Interstellar", "Interstellar.png", 50.0 },
+                    { 4, "Thor, tanrıları yok etmeyi amaçlayan Tanrı Kasabı Gorr ile savaşmak için Valkyrie, Korg ve eski kız arkadaşı Jane Foster'dan yardım ister.", "Thor", "Thor.png", 50.0 },
+                    { 5, "Donanmanın en iyi havacılarından biri olarak otuz yıldan fazla hizmet verdikten sonra, Pete Mitchell ait olduğu yerdedir, cesur bir test pilotu olarak sınırları zorlar ve onu yere indirecek rütbedeki ilerlemeden kaçınır.", "TopGun", "TopGun.png", 50.0 }
                 });
 
             migrationBuilder.InsertData(

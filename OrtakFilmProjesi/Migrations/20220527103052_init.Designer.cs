@@ -10,8 +10,8 @@ using OrtakFilmProjesi.Models.Database;
 namespace OrtakFilmProjesi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220527085001_photo_notMapped_removed")]
-    partial class photo_notMapped_removed
+    [Migration("20220527103052_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
