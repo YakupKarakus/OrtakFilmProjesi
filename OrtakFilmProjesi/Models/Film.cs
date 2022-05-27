@@ -21,7 +21,7 @@ namespace OrtakFilmProjesi.Models
         [NotMapped]
         public IFormFile Photo { get; set; }
         [Display(Name = "Fotoğraf Yolu")]
-
+        
         public string PhotoPath { get; set; } = "~/img/default.png";
         [MinLength (50,ErrorMessage = "Açıklama en az 50 karaketer olmalıdır.")]
         [Display(Name = "Açıklamalar")]
