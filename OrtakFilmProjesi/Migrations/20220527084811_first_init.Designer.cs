@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrtakFilmProjesi.Models.Database;
 
 namespace OrtakFilmProjesi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220527084811_first_init")]
+    partial class first_init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace OrtakFilmProjesi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhotoPath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -95,7 +94,6 @@ namespace OrtakFilmProjesi.Migrations
                             Id = 1,
                             Description = "Fiziksel ve ruhsal bir şifa yolculuğundayken, parlak bir beyin cerrahı mistik sanatların dünyasına çekilir.",
                             Name = "Dr.Strange",
-                            PhotoPath = "Dr.Strange.png",
                             Price = 50.0
                         },
                         new
@@ -103,7 +101,6 @@ namespace OrtakFilmProjesi.Migrations
                             Id = 2,
                             Description = "Asil bir aile, galaksinin en değerli varlığı üzerinde kontrol için bir savaşa girerken, varisi karanlık bir geleceğin vizyonları tarafından rahatsız edilir.",
                             Name = "Dune",
-                            PhotoPath = "Dune.png",
                             Price = 50.0
                         },
                         new
@@ -111,7 +108,6 @@ namespace OrtakFilmProjesi.Migrations
                             Id = 3,
                             Description = "Bir kaşif ekibi, insanlığın hayatta kalmasını sağlamak için uzayda bir solucan deliğinden geçer.",
                             Name = "Interstellar",
-                            PhotoPath = "Interstellar.png",
                             Price = 50.0
                         },
                         new
@@ -119,7 +115,6 @@ namespace OrtakFilmProjesi.Migrations
                             Id = 4,
                             Description = "Thor, tanrıları yok etmeyi amaçlayan Tanrı Kasabı Gorr ile savaşmak için Valkyrie, Korg ve eski kız arkadaşı Jane Foster'dan yardım ister.",
                             Name = "Thor",
-                            PhotoPath = "Thor.png",
                             Price = 50.0
                         },
                         new
@@ -127,7 +122,6 @@ namespace OrtakFilmProjesi.Migrations
                             Id = 5,
                             Description = "Donanmanın en iyi havacılarından biri olarak otuz yıldan fazla hizmet verdikten sonra, Pete Mitchell ait olduğu yerdedir, cesur bir test pilotu olarak sınırları zorlar ve onu yere indirecek rütbedeki ilerlemeden kaçınır.",
                             Name = "TopGun",
-                            PhotoPath = "TopGun.png",
                             Price = 50.0
                         });
                 });

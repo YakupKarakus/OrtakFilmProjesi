@@ -44,5 +44,10 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
 
             return View(filmVM);
         }
+
+        public IActionResult Deneme()
+        {
+            return View();
+        }
     }
 }
