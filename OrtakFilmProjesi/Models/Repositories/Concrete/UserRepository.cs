@@ -15,6 +15,12 @@ namespace OrtakFilmProjesi.Models.Repositories.Concrete
             this.db = db;
         }
 
-       
+        public User GetByMailAndPassword(string mail, string password)
+        {
+            return db.Users.FirstOrDefault(x => x.Mail == mail && x.Password == password);
+        }
+
+
+
     }
 }

@@ -29,6 +29,7 @@ namespace OrtakFilmProjesi
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FilmSiteConStr")));
             services.AddScoped(typeof(IRepository<>), typeof(Genericrepository<>));
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,7 @@ namespace OrtakFilmProjesi
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
