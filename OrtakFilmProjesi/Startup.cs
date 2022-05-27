@@ -54,7 +54,7 @@ namespace OrtakFilmProjesi
             {
                 endpoints.MapControllerRoute(
                     name: "User",
-                    pattern: "{area=User}/{controller=Home}/{action=UserIndex}/{id?}");
+                    pattern: "{area}/{controller}/{action}/{id?}");
             });
 
             app.UseEndpoints(endpoints =>

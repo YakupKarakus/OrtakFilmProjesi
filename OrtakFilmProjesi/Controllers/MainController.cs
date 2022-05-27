@@ -11,7 +11,7 @@ namespace OrtakFilmProjesi.Controllers
 {
     public class MainController : Controller
     {
-        private readonly FilmRepository filmRepository;
+      
         private readonly IRepository<Film> filmler;
         public MainController(IRepository<Film> filmler)
         {
