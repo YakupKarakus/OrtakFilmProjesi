@@ -9,6 +9,5 @@ namespace OrtakFilmProjesi.Areas.User.Models
     public class FilmVM
     {
         public Film Film { get; set; }
-        public Session Session { get; set; }
     }
 }

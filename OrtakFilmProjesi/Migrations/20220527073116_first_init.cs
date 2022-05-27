@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OrtakFilmProjesi.Migrations
 {
-    public partial class CreateDb : Migration
+    public partial class first_init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,9 @@ namespace OrtakFilmProjesi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,17 +37,18 @@ namespace OrtakFilmProjesi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Seanslars",
+                name: "Sessions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    seans = table.Column<int>(type: "int", nullable: false)
+                    Discount = table.Column<float>(type: "real", nullable: false),
+                    SessionTime = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Seanslars", x => x.Id);
+                    table.PrimaryKey("PK_Sessions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,46 +69,46 @@ namespace OrtakFilmProjesi.Migrations
                 name: "CategoryFilm",
                 columns: table => new
                 {
-                    FilmlerId = table.Column<int>(type: "int", nullable: false),
-                    categoriesId = table.Column<int>(type: "int", nullable: false)
+                    CategoriesId = table.Column<int>(type: "int", nullable: false),
+                    FilmsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryFilm", x => new { x.FilmlerId, x.categoriesId });
+                    table.PrimaryKey("PK_CategoryFilm", x => new { x.CategoriesId, x.FilmsId });
                     table.ForeignKey(
-                        name: "FK_CategoryFilm_Categories_categoriesId",
-                        column: x => x.categoriesId,
+                        name: "FK_CategoryFilm_Categories_CategoriesId",
+                        column: x => x.CategoriesId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryFilm_Films_FilmlerId",
-                        column: x => x.FilmlerId,
+                        name: "FK_CategoryFilm_Films_FilmsId",
+                        column: x => x.FilmsId,
                         principalTable: "Films",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FilmSeanslar",
+                name: "FilmSession",
                 columns: table => new
                 {
-                    FilmlerId = table.Column<int>(type: "int", nullable: false),
-                    seanslarsId = table.Column<int>(type: "int", nullable: false)
+                    FilmsId = table.Column<int>(type: "int", nullable: false),
+                    SessionsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FilmSeanslar", x => new { x.FilmlerId, x.seanslarsId });
+                    table.PrimaryKey("PK_FilmSession", x => new { x.FilmsId, x.SessionsId });
                     table.ForeignKey(
-                        name: "FK_FilmSeanslar_Films_FilmlerId",
-                        column: x => x.FilmlerId,
+                        name: "FK_FilmSession_Films_FilmsId",
+                        column: x => x.FilmsId,
                         principalTable: "Films",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FilmSeanslar_Seanslars_seanslarsId",
-                        column: x => x.seanslarsId,
-                        principalTable: "Seanslars",
+                        name: "FK_FilmSession_Sessions_SessionsId",
+                        column: x => x.SessionsId,
+                        principalTable: "Sessions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -116,14 +119,14 @@ namespace OrtakFilmProjesi.Migrations
                 values: new object[] { 1, "admin@hotmail.com", "12345" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryFilm_categoriesId",
+                name: "IX_CategoryFilm_FilmsId",
                 table: "CategoryFilm",
-                column: "categoriesId");
+                column: "FilmsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FilmSeanslar_seanslarsId",
-                table: "FilmSeanslar",
-                column: "seanslarsId");
+                name: "IX_FilmSession_SessionsId",
+                table: "FilmSession",
+                column: "SessionsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -132,7 +135,7 @@ namespace OrtakFilmProjesi.Migrations
                 name: "CategoryFilm");
 
             migrationBuilder.DropTable(
-                name: "FilmSeanslar");
+                name: "FilmSession");
 
             migrationBuilder.DropTable(
                 name: "Users");
@@ -144,7 +147,7 @@ namespace OrtakFilmProjesi.Migrations
                 name: "Films");
 
             migrationBuilder.DropTable(
-                name: "Seanslars");
+                name: "Sessions");
         }
     }
 }

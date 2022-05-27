@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrtakFilmProjesi.Models
 {
@@ -15,6 +17,9 @@ namespace OrtakFilmProjesi.Models
         [Required]
         [MinLength(5, ErrorMessage = "Film Adı en az 5 karakter olmalıdır.")]
         public string Name { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; }
         [Display(Name= "Fotoğraf Yolu")]
         public string PhotoPath { get; set; }
         [MinLength (50,ErrorMessage = "Açıklama en az 50 karaketer olmalıdır.")]

@@ -32,7 +32,15 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
             FilmVM filmVM = new FilmVM();
             Film film = filmVM.Film;
             filmVM.Film = filmRepository.GetById(id);
-            
+
+            return View(filmVM);
+        }
+
+        public IActionResult Buy(int id)
+        {
+            FilmVM filmVM = new FilmVM();
+            Film film = filmVM.Film;
+            filmVM.Film = filmRepository.GetById(id);
 
             return View(filmVM);
         }

@@ -21,32 +21,32 @@ namespace OrtakFilmProjesi.Migrations
 
             modelBuilder.Entity("CategoryFilm", b =>
                 {
-                    b.Property<int>("FilmlerId")
+                    b.Property<int>("CategoriesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("categoriesId")
+                    b.Property<int>("FilmsId")
                         .HasColumnType("int");
 
-                    b.HasKey("FilmlerId", "categoriesId");
+                    b.HasKey("CategoriesId", "FilmsId");
 
-                    b.HasIndex("categoriesId");
+                    b.HasIndex("FilmsId");
 
                     b.ToTable("CategoryFilm");
                 });
 
-            modelBuilder.Entity("FilmSeanslar", b =>
+            modelBuilder.Entity("FilmSession", b =>
                 {
-                    b.Property<int>("FilmlerId")
+                    b.Property<int>("FilmsId")
                         .HasColumnType("int");
 
-                    b.Property<int>("seanslarsId")
+                    b.Property<int>("SessionsId")
                         .HasColumnType("int");
 
-                    b.HasKey("FilmlerId", "seanslarsId");
+                    b.HasKey("FilmsId", "SessionsId");
 
-                    b.HasIndex("seanslarsId");
+                    b.HasIndex("SessionsId");
 
-                    b.ToTable("FilmSeanslar");
+                    b.ToTable("FilmSession");
                 });
 
             modelBuilder.Entity("OrtakFilmProjesi.Models.Category", b =>
@@ -72,6 +72,9 @@ namespace OrtakFilmProjesi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -79,12 +82,15 @@ namespace OrtakFilmProjesi.Migrations
                     b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Films");
                 });
 
-            modelBuilder.Entity("OrtakFilmProjesi.Models.Seanslar", b =>
+            modelBuilder.Entity("OrtakFilmProjesi.Models.Session", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,12 +100,15 @@ namespace OrtakFilmProjesi.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("seans")
+                    b.Property<float>("Discount")
+                        .HasColumnType("real");
+
+                    b.Property<int>("SessionTime")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Seanslars");
+                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("OrtakFilmProjesi.Models.User", b =>
@@ -132,30 +141,30 @@ namespace OrtakFilmProjesi.Migrations
 
             modelBuilder.Entity("CategoryFilm", b =>
                 {
-                    b.HasOne("OrtakFilmProjesi.Models.Film", null)
+                    b.HasOne("OrtakFilmProjesi.Models.Category", null)
                         .WithMany()
-                        .HasForeignKey("FilmlerId")
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OrtakFilmProjesi.Models.Category", null)
+                    b.HasOne("OrtakFilmProjesi.Models.Film", null)
                         .WithMany()
-                        .HasForeignKey("categoriesId")
+                        .HasForeignKey("FilmsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FilmSeanslar", b =>
+            modelBuilder.Entity("FilmSession", b =>
                 {
                     b.HasOne("OrtakFilmProjesi.Models.Film", null)
                         .WithMany()
-                        .HasForeignKey("FilmlerId")
+                        .HasForeignKey("FilmsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OrtakFilmProjesi.Models.Seanslar", null)
+                    b.HasOne("OrtakFilmProjesi.Models.Session", null)
                         .WithMany()
-                        .HasForeignKey("seanslarsId")
+                        .HasForeignKey("SessionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
