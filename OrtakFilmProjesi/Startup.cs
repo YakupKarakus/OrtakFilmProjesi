@@ -29,7 +29,9 @@ namespace OrtakFilmProjesi
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FilmSiteConStr")));
             services.AddScoped(typeof(IRepository<>), typeof(Genericrepository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddSession();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +49,7 @@ namespace OrtakFilmProjesi
 
             app.UseRouting();
             app.UseSession();
+            
 
             app.UseAuthorization();
 
@@ -54,9 +57,16 @@ namespace OrtakFilmProjesi
             {
                 endpoints.MapControllerRoute(
                     name: "User",
-                    pattern: "{area=User}/{controller=Home}/{action=UserIndex}/{id?}");
+                    pattern: "{area}/{controller}/{action}/{id?}");
             });
-
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+                endpoints.MapRazorPages();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

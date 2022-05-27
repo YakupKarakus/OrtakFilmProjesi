@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OrtakFilmProjesi.Models.Repositories.Abstract;
 using OrtakFilmProjesi.Models.Repositories.Concrete;
 
 
@@ -8,9 +9,9 @@ namespace OrtakFilmProjesi.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public AdminController(UserRepository userRepository) 
+        public AdminController(IUserRepository userRepository) 
         {
             
             this._userRepository = userRepository;

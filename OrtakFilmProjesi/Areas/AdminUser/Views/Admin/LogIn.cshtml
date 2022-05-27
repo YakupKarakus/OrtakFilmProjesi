@@ -1,11 +1,10 @@
 ﻿@using OrtakFilmProjesi.Models
 @model User
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
-    ViewData["Title"] = "Log In";
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Areas/Admin/Views/Admin/Shared/_LayoutAdmin.cshtml";
 }
+
 <div class="d-flex justify-content-center">
     <div clss="col-md-4 text-center">
         <form class="form-signin" asp-action="Login">
@@ -26,3 +25,4 @@
 
     </div>
 </div>
+

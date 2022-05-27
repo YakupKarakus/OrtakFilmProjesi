@@ -22,14 +22,14 @@
                          @if(Context.Session.GetString("Mail") ==null && Context.Session.GetString("Password") ==null)
                         {
                         <li class="nav-item ml-auto"> 
-                                <a class="btn btn-primary" asp-controller="Admin" asp-action="LogIn">Log In</a>
+                                <a class="btn btn-primary"  asp-controller="Admin" asp-action="LogIn">Log In</a>
                                 
                             </li>
                         }
                         else
                         {
                              <li class="nav-item ml-auto"> 
-                                <a class="btn btn-primary" asp-controller="Admin" asp-action="LogOut">Log Out</a>
+                                <a class="btn btn-primary"  asp-controller="Admin" asp-action="LogOut">Log Out</a>
                                 </li>
                         }
 
