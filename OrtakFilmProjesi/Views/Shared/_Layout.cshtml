@@ -19,7 +19,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                         @if(Context.Session.GetString("Mail") !=null && Context.Session.GetString("Password") !=null)
+                         @if(Context.Session.GetString("Mail") ==null && Context.Session.GetString("Password") ==null)
                         {
                         <li class="nav-item ml-auto"> 
                                 <a class="btn btn-primary" asp-controller="Admin" asp-action="LogIn">Log In</a>

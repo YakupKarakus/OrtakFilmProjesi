@@ -27,7 +27,7 @@ namespace OrtakFilmProjesi.Models
         public string Description { get; set; }
         [Display(Name = "Fiyat")]
         [Required]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         [Display(Name= "Seanslar")]
         public ICollection<Session> Sessions { get; set; }
         [Display(Name= "Kategoriler")]
