@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OrtakFilmProjesi.Areas.Admin.Models;
 using OrtakFilmProjesi.Models;
 using OrtakFilmProjesi.Models.Database;
+using OrtakFilmProjesi.Models.Repositories.Abstract;
 
 namespace OrtakFilmProjesi.Areas.Admin.Controllers
 {
@@ -14,10 +16,11 @@ namespace OrtakFilmProjesi.Areas.Admin.Controllers
     public class SessionsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public SessionsController(ApplicationDbContext context)
+        private readonly IRepository<Session> _session;
+        public SessionsController(ApplicationDbContext context, IRepository<Session> session)
         {
             _context = context;
+            this._session = session;
         }
 
         // GET: Admin/Sessions
@@ -47,7 +50,8 @@ namespace OrtakFilmProjesi.Areas.Admin.Controllers
         // GET: Admin/Sessions/Create
         public IActionResult Create()
         {
-            return View();
+            var session=new SessionVM();            
+            return View(session);
         }
 
         // POST: Admin/Sessions/Create
@@ -55,15 +59,15 @@ namespace OrtakFilmProjesi.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Date,Discount,SessionTime,Id")] Session session)
-        {
+        public async Task<IActionResult> Create([Bind("Date,Discount,SessionTime,Id")] SessionVM sessionS)
+        {            
             if (ModelState.IsValid)
             {
-                _context.Add(session);
+                _context.Add(sessionS.Session);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(session);
+            return View(sessionS);
         }
 
         // GET: Admin/Sessions/Edit/5
