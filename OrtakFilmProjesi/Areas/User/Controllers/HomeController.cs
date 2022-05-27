@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrtakFilmProjesi.Areas.User.Models;
 using OrtakFilmProjesi.Models;
 using OrtakFilmProjesi.Models.Repositories.Abstract;
 using OrtakFilmProjesi.Models.Repositories.Concrete;
@@ -28,8 +29,11 @@ namespace OrtakFilmProjesi.Areas.User.Controllers
 
         public IActionResult Detail(int id)
         {
-            var film = filmRepository.GetById(id);
-            return View(film);
+            FilmVM filmVM = new FilmVM();
+            Film film = filmVM.Film;
+            filmVM.Film = filmRepository.GetById(id);
+
+            return View(filmVM);
         }
     }
 }
